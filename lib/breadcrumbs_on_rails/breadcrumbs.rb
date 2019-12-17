@@ -91,7 +91,9 @@ module BreadcrumbsOnRails
           content = @context.link_to_unless_current(compute_name(element), compute_path(element), element.options)
         end
         if @options[:tag]
-          @context.content_tag(@options[:tag], content)
+          @context.content_tag(@options[:tag], class: "breadcrumb-item") do
+            content
+          end
         else
           ERB::Util.h(content)
         end
